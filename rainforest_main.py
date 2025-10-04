@@ -62,8 +62,8 @@ info = pygame.display.Info()
 # settings
 preferences = loadInfo("preferences.yaml")
 
-POMODORO_WORK = float(preferences.settings.work_time_minutes)
-POMODORO_BREAK = float(preferences.settings.break_time_minutes)
+POMODORO_WORK = float(preferences.settings.work_time_seconds)
+POMODORO_BREAK = float(preferences.settings.break_time_seconds)
 music_volume = preferences.settings.music_volume
 rain_volume = preferences.settings.rain_volume
 tree_animations = preferences.settings.tree_animations
@@ -705,8 +705,8 @@ def renderText(surface, font, pos, text):
 def updateSettings():
     global preferences
     settings_preferences = AttrDict({
-        "work_time_minutes": POMODORO_WORK,
-        "break_time_minutes": POMODORO_BREAK,
+        "work_time_seconds": POMODORO_WORK,
+        "break_time_seconds": POMODORO_BREAK,
         "music_volume": music_volume,
         "rain_volume": rain_volume,
         "tree_animations": tree_animations,
@@ -773,6 +773,7 @@ class Pomodoro:
                 POMODORO_BREAK = to_seconds(self.break_edit)
                 self.time_left = POMODORO_WORK
                 self.editing = False
+                updateSettings()
             elif self.cancel_rect.collidepoint(pos):
                 self.editing = False
             elif self.work_rect.collidepoint(pos):
@@ -832,8 +833,8 @@ class Pomodoro:
 
         if not self.running and not self.settings and self.timer_rect.collidepoint(pos):
             if not self.editing:
-                self.work_edit = f"00{POMODORO_WORK//60}"[-2:]+f"00{POMODORO_WORK%60}"[-2:]
-                self.break_edit = f"00{POMODORO_BREAK//60}"[-2:]+f"00{POMODORO_BREAK%60}"[-2:]
+                self.work_edit = f"00{int(POMODORO_WORK//60)}"[-2:]+f"00{int(POMODORO_WORK%60)}"[-2:]
+                self.break_edit = f"00{int(POMODORO_BREAK//60)}"[-2:]+f"00{int(POMODORO_BREAK%60)}"[-2:]
                 self.input_active = "none"
             self.editing = True
 

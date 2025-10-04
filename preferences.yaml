@@ -1,28 +1,28 @@
 default_settings:
-  break_time_minutes: 5
+  break_time_seconds: 300
   current_playlist: default_playlist
   enable_blocking: true
   enable_pausing: true
   enable_titles: true
   ground_level: 1100
   music_volume: 1
-  music_while_break: true
-  music_while_paused: true
+  music_while_break: false
+  music_while_paused: false
   rain_animations: true
   rain_volume: 1
   tree_animations: true
-  work_time_minutes: 25
+  work_time_seconds: 1500
 settings:
-  break_time_minutes: 5
+  break_time_seconds: 300
   current_playlist: default_playlist
   enable_blocking: true
   enable_pausing: true
   enable_titles: true
   ground_level: 1100
   music_volume: 1
-  music_while_break: true
-  music_while_paused: true
+  music_while_break: false
+  music_while_paused: false
   rain_animations: true
   rain_volume: 1
   tree_animations: true
-  work_time_minutes: 25
+  work_time_seconds: 1500
