@@ -1,0 +1,239 @@
+Kapok:
+  name: Kapok
+  base_info:
+    base_pos: [600, 700]
+    base_width: 25
+  trunk_info:
+    min_height: 500
+    max_height: 800
+    min_width: 3.5
+    angle_randomness: [0, 0]
+    taper: 0.02
+    taper_rate: 1
+    seg_min_height: 1
+    seg_max_height: 1
+    split_rate: 0
+    min_split_angle: 0
+    max_split_angle: 0
+  branch_info:
+    branch_max_height: 20
+    branchoff_min_height: 0.8
+    branchoff_angle: 60
+    branchoff_angle_randomness: 0
+    branchoff_prob: 0.8
+    branch_probs: [0, 0.6, 0.4]
+    branch_preference: 0.9
+    branch_angle: 30
+    min_seg: 4
+    max_seg: 6
+    width: 2
+    seg_height: 20
+    seg_min_height: 0.5
+    seg_max_height: 1
+  canopy_info:
+    stretch: 1
+    min_dist: 30
+    hang_up: false
+    hang_down: true
+    density: 200
+    spread: 25
+    leaf_spread: 75
+    bigleaf: false
+  color_info:
+    leaf1: [135, 170, 80]
+    leaf2: [90, 120, 75]
+    leaf3: [130, 160, 90]
+    trunk1: [190, 140, 100]
+    trunk2: [130, 100, 80]
+
+PurpleHeart:
+  name: Purple Heart
+  base_info:
+    base_pos: [600, 700]
+    base_width: 25
+  trunk_info:
+    min_height: 400
+    max_height: 600
+    min_width: 2.5
+    angle_randomness: [0, 0]
+    taper: 0.05
+    taper_rate: 1
+    seg_min_height: 1
+    seg_max_height: 1
+    split_rate: 0.03
+    min_split_angle: 10
+    max_split_angle: 20
+  branch_info:
+    branch_max_height: 30
+    branchoff_min_height: 0.3
+    branchoff_angle: 30
+    branchoff_angle_randomness: 0
+    branchoff_prob: 0.3
+    branch_probs: [0.5, 0.3, 0.2]
+    branch_preference: 0.75
+    branch_angle: 20
+    min_seg: 6
+    max_seg: 8
+    width: 2
+    seg_height: 20
+    seg_min_height: 0.5
+    seg_max_height: 1
+  canopy_info:
+    stretch: 0.3
+    min_dist: 20
+    hang_up: false
+    hang_down: true
+    density: 50
+    spread: 18
+    leaf_spread: 75
+    bigleaf: false
+  color_info:
+    leaf1: [135, 170, 80]
+    leaf2: [90, 120, 75]
+    leaf3: [130, 160, 90]
+    trunk1: [190, 140, 100]
+    trunk2: [130, 100, 80]
+
+BigLeafMahogany:
+  name: Big Leaf Mahogany
+  base_info:
+    base_pos: [600, 700]
+    base_width: 15
+  trunk_info:
+    min_height: 200
+    max_height: 400
+    min_width: 3
+    angle_randomness: [0, 0]
+    taper: 0.05
+    taper_rate: 1
+    seg_min_height: 1
+    seg_max_height: 1
+    split_rate: 0.06
+    min_split_angle: 20
+    max_split_angle: 30
+  branch_info:
+    branch_max_height: 20
+    branchoff_min_height: 0.2
+    branchoff_angle: 30
+    branchoff_angle_randomness: 0
+    branchoff_prob: 0.4
+    branch_probs: [0.45, 0.35, 0.2]
+    branch_preference: 0.4
+    branch_angle: 30
+    min_seg: 6
+    max_seg: 8
+    width: 2.5
+    seg_height: 20
+    seg_min_height: 0.5
+    seg_max_height: 1
+  canopy_info:
+    stretch: 0.8
+    min_dist: 20
+    hang_up: false
+    hang_down: true
+    density: 80
+    spread: 30
+    leaf_spread: 75
+    bigleaf: false
+  color_info:
+    leaf1: [135, 170, 80]
+    leaf2: [90, 120, 75]
+    leaf3: [130, 160, 90]
+    trunk1: [190, 140, 100]
+    trunk2: [130, 100, 80]
+
+Shrub:
+  name: Shrub
+  base_info:
+    base_pos: [600, 700]
+    base_width: 2
+  trunk_info:
+    min_height: 20
+    max_height: 30
+    min_width: 1
+    angle_randomness: [2, 4]
+    taper: 0.05
+    taper_rate: 1
+    seg_min_height: 1
+    seg_max_height: 1
+    split_rate: 0.06
+    min_split_angle: 20
+    max_split_angle: 30
+  branch_info:
+    branch_max_height: 10
+    branchoff_min_height: 0.1
+    branchoff_angle: 30
+    branchoff_angle_randomness: 0
+    branchoff_prob: 0.4
+    branch_probs: [0.25, 0.375, 0.375]
+    branch_preference: 0.25
+    branch_angle: 30
+    min_seg: 2
+    max_seg: 4
+    width: 1
+    seg_height: 20
+    seg_min_height: 0.5
+    seg_max_height: 1
+  canopy_info:
+    stretch: 0.8
+    min_dist: 10
+    hang_up: false
+    hang_down: true
+    density: 40
+    spread: 10
+    leaf_spread: 30
+    bigleaf: false
+  color_info:
+    leaf1: [135, 170, 80]
+    leaf2: [90, 120, 75]
+    leaf3: [130, 160, 90]
+    trunk1: [190, 140, 100]
+    trunk2: [130, 100, 80]
+
+Cacao:
+  name: Cacao
+  base_info:
+    base_pos: [600, 700]
+    base_width: 2
+  trunk_info:
+    min_height: 150
+    max_height: 250
+    min_width: 3
+    angle_randomness: [0, 3]
+    taper: 0.05
+    taper_rate: 1
+    seg_min_height: 1
+    seg_max_height: 1
+    split_rate: 0.04
+    min_split_angle: 20
+    max_split_angle: 30
+  branch_info:
+    branch_max_height: 10
+    branchoff_min_height: 0.0
+    branchoff_angle: 30
+    branchoff_angle_randomness: 0
+    branchoff_prob: 0.9
+    branch_probs: [0.4, 0.4, 0.2]
+    branch_preference: 0.25
+    branch_angle: 30
+    min_seg: 1
+    max_seg: 3
+    width: 1
+    seg_height: 20
+    seg_min_height: 0.5
+    seg_max_height: 1
+  canopy_info:
+    stretch: 0.8
+    min_dist: 10
+    hang_up: true
+    hang_down: true
+    density: 40
+    spread: 20
+    leaf_spread: 100
+    bigleaf: false
+  color_info:
+    leaf1: [135, 170, 80]
+    leaf2: [90, 120, 75]
+    leaf3: [130, 160, 90]
+    trunk1: [190, 140, 100]
+    trunk2: [130, 100, 80]
