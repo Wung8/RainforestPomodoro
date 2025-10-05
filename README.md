@@ -4,7 +4,7 @@ Rainforest Pomodoro
 
 <img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/e5f1d379-82ae-4fa5-9cb3-d2e8564bb2de" />
 
-<img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/a867116d-7342-4a96-8db9-8879379c385c" />
+<img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/6328909e-0ff6-4fbe-b608-f3d75147bbf9" />
 
 Features:
 - procedural generation
