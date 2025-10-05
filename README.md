@@ -20,6 +20,7 @@ How To:
 - settings:
   - music: music volume slider
   - rain: rain volume slider
+  - scale: display scale slider
   - enable pausing: enables the pause button
   - enable titles: enables music title display
   - music on pause: enables music to play while session is paused
