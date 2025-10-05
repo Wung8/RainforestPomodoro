@@ -39,7 +39,7 @@ def toDict(obj):
         return obj
 
 tree_infos = loadInfo("tree_info.yaml")
-tree_infos = [tree_infos[tree] for tree in list(tree_infos.keys())]
+tree_infos = [tree_infos[tree] for tree in list(tree_infos.keys()) if "name" in tree_infos[tree]]
 tree_names = [tree.name for tree in tree_infos]
 beginning_trees = [tree_names.index(tree_name) for tree_name in \
                    ["Kapok", "Purple Heart", "Big Leaf Mahogany", "Cacao"]]
@@ -75,6 +75,7 @@ music_while_break = preferences.settings.music_while_break
 enable_blocking = preferences.settings.enable_blocking
 current_playlist = preferences.settings.current_playlist
 ground_level = preferences.settings.ground_level
+display_scale = float(preferences.settings.display_scale)
 
 music_files = getSongs()
 
@@ -718,6 +719,7 @@ def updateSettings():
         "enable_blocking": enable_blocking,
         "current_playlist": current_playlist,
         "ground_level": ground_level,
+        "display_scale": display_scale
     })
     preferences.settings = settings_preferences
     with open("preferences.yaml", "w") as f:
@@ -749,15 +751,16 @@ class Pomodoro:
         self.active_slider = None
         self.music_volume_slider = Slider((box_x, 120), "music")
         self.rain_volume_slider = Slider((box_x, 160), "rain")
-        self.tree_animations_checkbox = CheckBox((box_x, 200), "tree animations")
-        self.rain_animations_checkbox = CheckBox((box_x, 240), "rain animations")
-        self.enable_pausing_checkbox = CheckBox((box_x, 280), "enable pausing")
-        self.enable_titles_checkbox = CheckBox((box_x, 320), "enable titles")
-        self.music_while_paused_checkbox = CheckBox((box_x, 360), "music on paused")
-        self.music_while_break_checkbox = CheckBox((box_x, 400), "music on break")
-        self.enable_blocking_checkbox = CheckBox((box_x, 440), "enable blocking")
+        self.display_scale_slider = Slider((box_x, 200), "scale")
+        self.tree_animations_checkbox = CheckBox((box_x, 240), "tree animations")
+        self.rain_animations_checkbox = CheckBox((box_x, 280), "rain animations")
+        self.enable_pausing_checkbox = CheckBox((box_x, 320), "enable pausing")
+        self.enable_titles_checkbox = CheckBox((box_x, 360), "enable titles")
+        self.music_while_paused_checkbox = CheckBox((box_x, 400), "music on paused")
+        self.music_while_break_checkbox = CheckBox((box_x, 440), "music on break")
+        self.enable_blocking_checkbox = CheckBox((box_x, 480), "enable blocking")
 
-        self.playlist_pos = (box_x, 500)
+        self.playlist_pos = (box_x, 540)
         x, y = self.playlist_pos
         self.playlist_checkboxes = [CheckBox((x, y+40*n+40), f"  {plst}") for n, plst in enumerate(playlists)]
 
@@ -796,6 +799,8 @@ class Pomodoro:
                 self.active_slider = self.music_volume_slider
             elif self.rain_volume_slider.getRect().collidepoint(pos):
                 self.active_slider = self.rain_volume_slider
+            elif self.display_scale_slider.getRect().collidepoint(pos):
+                self.active_slider = self.display_scale_slider
             else:
                 self.active_slider = None
 
@@ -951,6 +956,7 @@ class Pomodoro:
 
             self.music_volume_slider.draw(surface)
             self.rain_volume_slider.draw(surface)
+            self.display_scale_slider.draw(surface)
             self.tree_animations_checkbox.draw(surface)
             self.rain_animations_checkbox.draw(surface)
             self.enable_pausing_checkbox.draw(surface)
@@ -1109,6 +1115,8 @@ class Slider():
                 scale = music_volume
             case "rain":
                 scale = rain_volume
+            case "scale":
+                scale = display_scale
                 
         pygame.draw.rect(surface, (255,255,255), (x+110,y+8,150*scale,10), border_radius=10)
         pygame.draw.rect(surface, (255,255,255), (x+110,y+8,150,10), 2, border_radius=10)
@@ -1139,6 +1147,10 @@ class Slider():
                 rain_volume = scale
                 if current_track == break_music:
                     pygame.mixer.music.set_volume(rain_volume)
+            case "scale":
+                global display_scale, icon_rect
+                display_scale = scale
+                icon_rect.y = surface_size[1] - surface_size[1]*(1+display_scale) + ground_level*(1+display_scale) + 8/(1+display_scale)
 
 
 class CheckBox():
@@ -1378,6 +1390,7 @@ for _ in range(25):
 icon_size = 30
 icon_padding = 20
 icon_rect = pygame.Rect(surface_size[0] - icon_size - icon_padding, ground_level, icon_size, icon_size)
+icon_rect.y = surface_size[1] - surface_size[1]*(1+display_scale) + ground_level*(1+display_scale) + 8/(1+display_scale)
 dragging_ground = False
 
 def draw_menu_icon(surface, rect, color=(60, 90, 60)):
@@ -1423,9 +1436,10 @@ while True:
 
         elif event.type == pygame.MOUSEMOTION and dragging_ground and not pomodoro.running:
             # Update ground level with mouse Y
-            new_level = event.pos[1] / scale - 15
+            surface_pos = event.pos[1] / scale
+            new_level = (surface_pos + 1200*(1+display_scale) - 1200) / (1+display_scale) - 10
             ground_level = max(600, min(surface_size[1]-50, new_level))  # clamp between 600px and bottom
-            icon_rect.y = ground_level
+            icon_rect.y = surface_size[1] - surface_size[1]*(1+display_scale) + ground_level*(1+display_scale) + 8/(1+display_scale)
 
         if pygame.mouse.get_pressed()[0]:
             mouse_x, mouse_y = pygame.mouse.get_pos()
@@ -1451,9 +1465,6 @@ while True:
 
     surface.blit(foreground_surface, (0,ground_level-1100))
 
-    if not pomodoro.running:
-        draw_menu_icon(surface, icon_rect)
-
     rain_surface.fill((0,0,0,0))
     # --- Rain Effect During Break ---
     if pomodoro.running and not pomodoro.is_work:
@@ -1464,6 +1475,14 @@ while True:
             drop.update(surface_size[0], surface_size[1])
             drop.draw(rain_surface)
     surface.blit(rain_surface, (0,0))
+
+    scaled_surface = pygame.transform.scale(surface, scaleVec(surface_size, display_scale+1))
+    p1 = surface.get_rect().midbottom
+    p2 = scaled_surface.get_rect().midbottom
+    surface.blit(scaled_surface, addVec(p1, scaleVec(p2,-1)))
+
+    if not pomodoro.running:
+        draw_menu_icon(surface, icon_rect)    
 
     pomodoro.update()
     pomodoro.draw(surface)
