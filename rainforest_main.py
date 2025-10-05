@@ -743,19 +743,21 @@ class Pomodoro:
 
         self.pausebutton = PauseButton((1810, 160))
         self.titledisplay = TitleDisplay((1800, 1150))
+
+        box_x = surface_size[0] - 300 - 30
         
         self.active_slider = None
-        self.music_volume_slider = Slider((1590, 120), "music")
-        self.rain_volume_slider = Slider((1590, 160), "rain")
-        self.tree_animations_checkbox = CheckBox((1590, 200), "tree animations")
-        self.rain_animations_checkbox = CheckBox((1590, 240), "rain animations")
-        self.enable_pausing_checkbox = CheckBox((1590, 280), "enable pausing")
-        self.enable_titles_checkbox = CheckBox((1590, 320), "enable titles")
-        self.music_while_paused_checkbox = CheckBox((1590, 360), "music on paused")
-        self.music_while_break_checkbox = CheckBox((1590, 400), "music on break")
-        self.enable_blocking_checkbox = CheckBox((1590, 440), "enable blocking")
+        self.music_volume_slider = Slider((box_x, 120), "music")
+        self.rain_volume_slider = Slider((box_x, 160), "rain")
+        self.tree_animations_checkbox = CheckBox((box_x, 200), "tree animations")
+        self.rain_animations_checkbox = CheckBox((box_x, 240), "rain animations")
+        self.enable_pausing_checkbox = CheckBox((box_x, 280), "enable pausing")
+        self.enable_titles_checkbox = CheckBox((box_x, 320), "enable titles")
+        self.music_while_paused_checkbox = CheckBox((box_x, 360), "music on paused")
+        self.music_while_break_checkbox = CheckBox((box_x, 400), "music on break")
+        self.enable_blocking_checkbox = CheckBox((box_x, 440), "enable blocking")
 
-        self.playlist_pos = (1590, 500)
+        self.playlist_pos = (box_x, 500)
         x, y = self.playlist_pos
         self.playlist_checkboxes = [CheckBox((x, y+40*n+40), f"  {plst}") for n, plst in enumerate(playlists)]
 
