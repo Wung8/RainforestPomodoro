@@ -1,4 +1,5 @@
 # Rainforest Pomodoro
+Relaxing desktop app pomodoro.
 
 <img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/fabdb5db-2af5-43d7-80ce-826ab6e72f54" />
 
