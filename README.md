@@ -1,4 +1,4 @@
-Rainforest Pomodoro
+# Rainforest Pomodoro
 
 <img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/fabdb5db-2af5-43d7-80ce-826ab6e72f54" />
 
@@ -6,12 +6,13 @@ Rainforest Pomodoro
 
 <img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/6328909e-0ff6-4fbe-b608-f3d75147bbf9" />
 
-Features:
+## Features:
 - procedural generation
 - screen blocking during breaks
 - music player
 
-How To:
+## How To:
+- run `rainforest_main.py`
 - click on Start and Stop Session to start and stop sessions
 - click on the timer display to change time settings
 - drag the ≡ icon on the top right of the grass to adjust ground level
